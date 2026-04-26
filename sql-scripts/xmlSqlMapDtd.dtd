@@ -1,0 +1,4 @@
+<!ELEMENT DataSet (Entry+)>
+<!ELEMENT Entry (TableName, TableSql+)>
+<!ELEMENT TableName (#PCDATA)>
+<!ELEMENT TableSql (#PCDATA)>

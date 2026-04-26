@@ -1,0 +1,14 @@
+<DataSet>
+    <Entry>
+        <TableName><!-- category --></TableName>
+        <TableSql><!-- SELECT category_id, category_name FROM category --></TableSql>
+    </Entry>
+    <Entry>
+        <TableName><!-- brand --></TableName>
+        <TableSql><!-- SELECT brand_id, brand_name FROM brand --></TableSql>
+    </Entry>
+    <Entry>
+        <TableName><!-- product --></TableName>
+        <TableSql><!-- SELECT product_id, sku, product_name, product_description, category_id, brand_id FROM product --></TableSql>
+    </Entry>
+</DataSet>
