@@ -24,7 +24,7 @@
 
 - NOTE: the bootstrap page (menus) is not connected: we are focussing on the server-side functionality
 
-- NOTE: Flask serves both backend and frontend app (via static content)
+- NOTE: FastAPI serves both backend and frontend app (via static content)
 
 # To run the web-app
 
