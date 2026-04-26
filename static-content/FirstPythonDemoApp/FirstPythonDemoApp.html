@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>FirstPythonDemo</title>
+
+    <!-- Prevent browser from requesting /favicon.ico -->
+    <link rel="icon" href="data:,">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="JqueryPaintLogic.js"></script>
+    <script src="RestfulApiCallbackHandler.js"></script>
+    <script>
+        var jq = jQuery.noConflict();
+
+        // we need this utility.
+        jqueryPaintLogic = new JqueryPaintLogic();
+
+        jq(document).ready(function(){
+
+            // we need this utility.
+            restfulApiCallbackHandler = new RestfulApiCallbackHandler();
+
+            // set up 7 listeners,handlers for webpage ui events
+            jq("#createMariaDbBtn").on("click", function() { restfulApiCallbackHandler.createTablesHttpHandlerReturnBoolean("/create_tables" /*httpEncodedUrl*/, "#responseFromMariaDb" /*htmlIdToOutputResponse*/, "creating" /*prefix*/); });
+            jq("#insertIntoMariaDbBtn").on("click", function() { restfulApiCallbackHandler.createTablesHttpHandlerReturnBoolean("/insert_into_tables" /*httpEncodedUrl*/, "#responseFromMariaDb" /*htmlIdToOutputResponse*/, "inserting-into-mariadb" /*prefix*/); });
+            jq("#addConstraintMariaDbBtn").on("click", function() { restfulApiCallbackHandler.createTablesHttpHandlerReturnBoolean("/add_constraints_tables" /*httpEncodedUrl*/, "#responseFromMariaDb" /*htmlIdToOutputResponse*/, "adding-constraint-mariadb" /*prefix*/); });
+            // NOTE: json returned
+            jq("#selectFromMariaDbBtn").on("click", function() { restfulApiCallbackHandler.createTablesHttpHandlerReturnBoolean("/select_from_tables" /*httpEncodedUrl*/, "#responseFromMariaDb" /*htmlIdToOutputResponse*/, "regular-selecting-all-from-mariadb" /*prefix*/); });
+            jq("#ingestIntoChromaDbBtn").on("click", function() { restfulApiCallbackHandler.createTablesHttpHandlerReturnBoolean("/ingest_into_chroma" /*httpEncodedUrl*/, "#responseFromMariaDb" /*htmlIdToOutputResponse*/, "ingesting-all-into-chromadb" /*prefix*/); });
+            //TODO: returns JSON
+            jq("#queryChromaDbBtn").on("click", function() { restfulApiCallbackHandler.queryChromaRetrieveAndDisplayHttpHandler("/query_chroma_retrieve_from_maria" /*httpEncodedUrl*/, "#queryChromaDb" /*htmlIdToOutputResponse*/, "querying-chromadb-then-retrieve" /*prefix*/); });
+            jq("#dropMariaDbBtn").on("click", function() { restfulApiCallbackHandler.createTablesHttpHandlerReturnBoolean("/drop_tables" /*httpEncodedUrl*/, "#responseFromMariaDb" /*htmlIdToOutputResponse*/, "dropping" /*prefix*/); });
+
+            // any time we need to scrub html content to known empty state
+            jqueryPaintLogic.appendInitialDynamicDataToTag("#mainData");
+
+        });
+    </script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .dynamicRow {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="FirstPythonDemoApp.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">Disabled</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-5">Run through Bills WebAppDemo</h1>
+      <p>This app manually creates tables inserts data adds foreign keys selects ll and drops tables. in addition it ingests the data into an embedded chroma-vector-db and uses it for semantic search.</p>
+      <p>Note the data is very limited. we provide a couple of hints as what to search for.</p>
+      <p><a class="btn btn-primary btn-lg" role="button" id="createMariaDbBtn" name="createMariaDbBtn">Create DB Tables</a></p>
+      <p><a class="btn btn-primary btn-lg" role="button" id="insertIntoMariaDbBtn" name="insertIntoDbBtn">Insert Into DB Tables</a></p>
+      <p><a class="btn btn-primary btn-lg" role="button" id="addConstraintMariaDbBtn" name="addConstraintDbBtn">Add constraint DB Tables</a></p>
+      <p><a class="btn btn-primary btn-lg" role="button" id="selectFromMariaDbBtn" name="selectFromDbBtn">Select from DB Tables</a></p>
+      <p><a class="btn btn-primary btn-lg" role="button" id="ingestIntoChromaDbBtn" name="ingestIntoChromaDbBtn">Ingest from DB Tables into ChromaDb</a></p>
+      <p>
+        <a class="btn btn-primary btn-lg" role="button" id="queryChromaDbBtn" name="queryChromaDbBtn">Query ChromaDb and retrieve from MariaDb</a>
+        <div class="form-group">
+          <label for="searchTerm">Search Term</label>
+          <input type="text" class="form-control" id="searchTerm" placeholder="Enter searchTerm">
+        </div>
+      </p>
+      <p><a class="btn btn-primary btn-lg" role="button" id="dropMariaDbBtn" name="dropMariaDbBtn">Drop DB Tables</a></p>
+    </div>
+  </div>
+
+  <div class="container" id="mainData" name="mainData">
+
+  </div> <!-- /container -->
+
+</main>
+
+<footer class="container">
+  <p>&copy; Company 2017-2022</p>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<DataSet>
+    <Entry>
+        <TableName><!-- category --></TableName>
+        <TableSql><!-- CREATE TABLE category ( category_id int(11) NOT NULL AUTO_INCREMENT, category_name varchar(128) NOT NULL, PRIMARY KEY (category_id)) --></TableSql>
+    </Entry>
+    <Entry>
+        <TableName><!-- brand --></TableName>
+        <TableSql><!-- CREATE TABLE brand ( brand_id int(11) NOT NULL AUTO_INCREMENT, brand_name varchar(128) NOT NULL, PRIMARY KEY (brand_id)) --></TableSql>
+    </Entry>
+    <Entry>
+        <TableName><!-- product --></TableName>
+        <TableSql><!-- CREATE TABLE product ( product_id int(11) NOT NULL AUTO_INCREMENT, sku varchar(128) NOT NULL, product_name varchar(128) NOT NULL, product_description varchar(512) NOT NULL, category_id int(11) NOT NULL, brand_id int(11) NOT NULL, PRIMARY KEY (product_id)) --></TableSql>
+    </Entry>
+</DataSet>

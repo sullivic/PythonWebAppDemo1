@@ -1,0 +1,6 @@
+<DataSet>
+    <Entry>
+        <TableName><!-- product --></TableName>
+        <TableSql><!-- SELECT product_id, product_name, product_description FROM product --></TableSql>
+    </Entry>
+</DataSet>

@@ -1,0 +1,7 @@
+<DataSet>
+    <Entry>
+        <TableName><!-- product --></TableName>
+        <TableSql><!-- ALTER TABLE product ADD CONSTRAINT fk_category FOREIGN KEY(category_id) references category(category_id) on delete restrict on update restrict --></TableSql>
+        <TableSql><!-- ALTER TABLE product ADD CONSTRAINT fk_brand FOREIGN KEY(brand_id) references brand(brand_id) on delete restrict on update restrict --></TableSql>
+    </Entry>
+</DataSet>

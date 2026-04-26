@@ -1,0 +1,14 @@
+<DataSet>
+    <Entry>
+        <TableName><!-- product --></TableName>
+        <TableSql><!-- DROP TABLE product --></TableSql>
+    </Entry>
+    <Entry>
+        <TableName><!-- category --></TableName>
+        <TableSql><!-- DROP TABLE category --></TableSql>
+    </Entry>
+    <Entry>
+        <TableName><!-- brand --></TableName>
+        <TableSql><!-- DROP TABLE brand --></TableSql>
+    </Entry>
+</DataSet>
