@@ -1,9 +1,9 @@
 # First WebApp Demo
 
-This showcases skills in python based web application.
-The first project demonstrates manually driving db migration.
-It also demonstrates populating a vectordb and using that for search.
-Although these datasets are minimal, a commercial product can be derived by scaling up the data-points and query complexity.
+- This showcases skills in python based web application.
+- This first project demonstrates manually driving db migration.
+- It also demonstrates populating a vectordb and using that for search.
+- Although these datasets are minimal, a commercial product can be derived by scaling up the data-points and query complexity.
 
 # packages, dependencies, tools.
 
